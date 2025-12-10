@@ -40,7 +40,7 @@ public:
   void train(size_t epochs = 2000, double tolerance = 1e-6) {
     double prevloss = std::numeric_limits<double>::max();
     for (size_t epoch = 0; epoch < epochs; ++epoch) {
-      std::vector<double> gradw(wSize_, 0);
+      std::vector<double> gradw(wSize_, 0.0);
       double gradb = 0.0;
       computeGradient(gradw, gradb);
 
@@ -130,8 +130,8 @@ private:
     return sumloss;
   }
   void computeGradient(std::vector<double> &gradw, double &gradb) const {
-    std::vector<double> sum_dw(wSize_, 0);
-    double sum_db = 0;
+    std::vector<double> sum_dw(wSize_, 0.0);
+    double sum_db = 0.0;
 
     for (const auto &cur : datas_) {
       double y_hat = dot(w_, cur.x) + b_;
